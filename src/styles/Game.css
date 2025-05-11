@@ -1,0 +1,133 @@
+.game-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+  padding: 20px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.backup-btn {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.backup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.game-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+}
+
+.signal-btn {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.signal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
+}
+
+.signal-btn:active {
+  transform: translateY(0);
+}
+
+.error-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 60px;
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.icon-error {
+  font-size: 20px;
+  margin-right: 5px;
+  opacity: 0.9;
+}
+
+.error-message {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.error-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 307px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 307px;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.close-error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 60px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-error:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+} 
