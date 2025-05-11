@@ -46,7 +46,7 @@ const Game = () => {
       return;
     }
 
-    let receivingSignal = getRandomFloat(1, 10.99, 2);
+    let receivingSignal = getRandomFloat(1, 3.99, 2);
     if (receivingSignal.toString().length === 3) {
       receivingSignal += 0.1;
     }
