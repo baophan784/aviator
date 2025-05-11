@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, doc, updateDoc, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, doc, updateDoc, query, orderBy, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import '../styles/Admin.css';
 
@@ -10,17 +10,34 @@ interface User {
   createdAt: string;
 }
 
+const ITEMS_PER_PAGE = 10;
+
 const Admin = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [amount, setAmount] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  useEffect(() => {
+    // Filter users based on search term
+    const filtered = users.filter(user => 
+      user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.contact.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredUsers(filtered);
+    setTotalPages(Math.ceil(filtered.length / ITEMS_PER_PAGE));
+    setCurrentPage(1);
+  }, [searchTerm, users]);
 
   const fetchUsers = async () => {
     try {
@@ -31,6 +48,8 @@ const Admin = () => {
         ...doc.data()
       })) as User[];
       setUsers(usersData);
+      setFilteredUsers(usersData);
+      setTotalPages(Math.ceil(usersData.length / ITEMS_PER_PAGE));
     } catch (error) {
       console.error('Error fetching users:', error);
       setError('Không thể tải danh sách người dùng');
@@ -104,12 +123,28 @@ const Admin = () => {
     }
   };
 
+  const getCurrentPageUsers = () => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return filteredUsers.slice(startIndex, endIndex);
+  };
+
   return (
     <div className="admin-container">
       <h1>Quản lý người dùng</h1>
       
       {error && <div className="error-message">{error}</div>}
       {success && <div className="success-message">{success}</div>}
+
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Tìm kiếm theo tên đăng nhập hoặc liên hệ..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
 
       <div className="users-list">
         <table>
@@ -123,7 +158,7 @@ const Admin = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map(user => (
+            {getCurrentPageUsers().map(user => (
               <tr key={user.username}>
                 <td>{user.username}</td>
                 <td>{user.balance.toLocaleString()} xu</td>
@@ -141,6 +176,26 @@ const Admin = () => {
             ))}
           </tbody>
         </table>
+
+        <div className="pagination">
+          <button 
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="pagination-btn"
+          >
+            Trước
+          </button>
+          <span className="page-info">
+            Trang {currentPage} / {totalPages}
+          </span>
+          <button 
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+            className="pagination-btn"
+          >
+            Sau
+          </button>
+        </div>
       </div>
 
       {selectedUser && (

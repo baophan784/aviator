@@ -12,6 +12,31 @@
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #B41313;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .users-list {
   background: rgba(44, 62, 80, 0.9);
   border-radius: 10px;
@@ -54,6 +79,43 @@ tr:hover {
 .action-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.pagination-btn {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.pagination-btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.page-info {
+  color: #FFD700;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .balance-modal {
@@ -114,7 +176,7 @@ tr:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
@@ -138,22 +200,22 @@ tr:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.error-message, .success-message {
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: 500;
-}
-
 .error-message {
-  background: rgba(231, 76, 60, 0.2);
-  border: 1px solid #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
   color: #e74c3c;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  border: 1px solid rgba(231, 76, 60, 0.3);
 }
 
 .success-message {
-  background: rgba(46, 204, 113, 0.2);
-  border: 1px solid #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
   color: #2ecc71;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  border: 1px solid rgba(46, 204, 113, 0.3);
 } 
