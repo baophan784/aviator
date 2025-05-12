@@ -49,15 +49,14 @@ const Game = () => {
   // Tạo xác suất có trọng số
   const weightedRandom = () => {
     const rand = Math.random();
-    if (rand < 0.6) {
-      // 60% xác suất: từ 1.0 đến 1.5
-      return getRandomFloat(1.0, 1.5, 2);
-    } else if (rand < 0.95) {
-      // 25% xác suất: từ 1.5 đến 5
-      return getRandomFloat(1.5, 4.0, 2);
+    if (rand < 0.2) {
+      return getRandomFloat(1.0, 1.2, 2);
+    } else if (rand < 0.6) {
+      return getRandomFloat(1.2, 3.0, 2);
+    }else if (rand < 0.95) {
+      return getRandomFloat(3.0, 5.2, 2);
     } else {
-      // 15% xác suất: từ 5 đến 20.99
-      return getRandomFloat(4.0, 20.99, 2);
+      return getRandomFloat(5.2, 40.99, 2);
     }
   };
 
