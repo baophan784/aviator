@@ -35,28 +35,47 @@ const Game = () => {
   };
 
   const handleGetSignal = async () => {
-    if (balance < 1) {
-      showErrorMessage('Số xu không đủ. Vui lòng liên hệ admin cấp miễn phí!');
-      return;
-    }
+  if (balance < 1) {
+    showErrorMessage('Số xu không đủ. Vui lòng liên hệ admin cấp miễn phí!');
+    return;
+  }
 
-    const success = await deductBalance(1);
-    if (!success) {
-      showErrorMessage('Không thể trừ xu. Vui lòng thử lại!');
-      return;
-    }
+  const success = await deductBalance(1);
+  if (!success) {
+    showErrorMessage('Không thể trừ xu. Vui lòng thử lại!');
+    return;
+  }
 
-    let receivingSignal = getRandomFloat(1, 3.99, 2);
-    if (receivingSignal.toString().length === 3) {
-      receivingSignal += 0.1;
+  // Tạo xác suất có trọng số
+  const weightedRandom = () => {
+    const rand = Math.random();
+    if (rand < 0.6) {
+      // 60% xác suất: từ 1.0 đến 1.5
+      return getRandomFloat(1.0, 1.5, 2);
+    } else if (rand < 0.85) {
+      // 25% xác suất: từ 1.5 đến 5
+      return getRandomFloat(1.5, 5.0, 2);
+    } else {
+      // 15% xác suất: từ 5 đến 20.99
+      return getRandomFloat(5.0, 20.99, 2);
     }
-    if (receivingSignal.toString().length === 1) {
-      receivingSignal += 0.01;
-    }
-    setSignal(`${receivingSignal}x`);
-    setIsSignalActive(true);
-    setTimer(60);
   };
+
+  let receivingSignal = weightedRandom();
+
+  // Xử lý làm tròn đặc biệt nếu cần
+  if (receivingSignal.toString().length === 3) {
+    receivingSignal += 0.1;
+  }
+  if (receivingSignal.toString().length === 1) {
+    receivingSignal += 0.01;
+  }
+
+  setSignal(`${receivingSignal}x`);
+  setIsSignalActive(true);
+  setTimer(60);
+};
+
 
   const handleGetSignalTwo = () => {
     setIsErrorTimerActive(true);
