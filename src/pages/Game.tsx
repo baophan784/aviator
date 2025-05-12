@@ -89,7 +89,7 @@ const Game = () => {
   useEffect(() => {
     if (signal) {
       const finalValue = parseFloat(signal);
-      let currentValue = 0.01;
+      let currentValue = 1.01;
       const duration = 2000; // 2 seconds
       const steps = 50; // 50 steps
       const increment = (finalValue - currentValue) / steps;
