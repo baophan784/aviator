@@ -77,7 +77,7 @@ const Login = () => {
         // Lưu thông tin người dùng vào collection User
         const userRef = doc(collection(db as Firestore, 'User'), formData.username);
         await setDoc(userRef, {
-          username: formData.username,
+          username: formData.username.toLowerCase(),
           password: formData.password,
           contact: formData.contact,
           balance: 0,
