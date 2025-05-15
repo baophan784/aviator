@@ -75,7 +75,7 @@ const Login = () => {
         const userCredential = await createUserWithEmailAndPassword(auth as Auth, email, formData.password);
         
         // Lưu thông tin người dùng vào collection User
-        const userRef = doc(collection(db as Firestore, 'User'), formData.username);
+        const userRef = doc(collection(db as Firestore, 'User'), formData.username.toLowerCase());
         await setDoc(userRef, {
           username: formData.username.toLowerCase(),
           password: formData.password,
