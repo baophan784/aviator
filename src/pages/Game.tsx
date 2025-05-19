@@ -86,7 +86,7 @@ const Game = () => {
     }, 5000);
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (signal) {
       const finalValue = parseFloat(signal);
       let currentValue = 1.01;
@@ -106,8 +106,29 @@ const Game = () => {
 
       return () => clearInterval(interval);
     }
-  }, [signal]);
+  }, [signal]);*/
+  useEffect(() => {
+    if (signal) {
+      // const finalValue = parseFloat(signal);
+      // let currentValue = 0.01;
+      // const duration = 2000; // 2 seconds
+      // const steps = 50; // 50 steps
+      // const increment = (finalValue - currentValue) / steps;
+      // const intervalTime = duration / steps;
 
+      // const interval = setInterval(() => {
+      //   currentValue += increment;
+      //   if (currentValue >= finalValue) {
+      //     currentValue = finalValue;
+      //     clearInterval(interval);
+      //   }
+      //   setDisplaySignal(`${currentValue.toFixed(2)}x`);
+      // }, intervalTime);
+      setDisplaySignal("Đang bảo trì");
+      // return () => clearInterval(interval);
+    }
+  }, [signal]);
+  
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (timer > 0) {
