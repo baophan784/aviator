@@ -49,9 +49,9 @@ const Game = () => {
   // Tạo xác suất có trọng số
   const weightedRandom = () => {
     const rand = Math.random();
-    if (rand < 0.2) {
+    if (rand < 0.3) {
       return getRandomFloat(1.0, 1.2, 2);
-    } else if (rand < 0.6) {
+    } else if (rand < 0.7) {
       return getRandomFloat(1.2, 3.0, 2);
     }else if (rand < 0.95) {
       return getRandomFloat(3.0, 5.2, 2);
@@ -86,7 +86,7 @@ const Game = () => {
     }, 5000);
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (signal) {
       const finalValue = parseFloat(signal);
       let currentValue = 1.01;
@@ -106,28 +106,8 @@ const Game = () => {
 
       return () => clearInterval(interval);
     }
-  }, [signal]);*/
-  useEffect(() => {
-    if (signal) {
-      // const finalValue = parseFloat(signal);
-      // let currentValue = 0.01;
-      // const duration = 2000; // 2 seconds
-      // const steps = 50; // 50 steps
-      // const increment = (finalValue - currentValue) / steps;
-      // const intervalTime = duration / steps;
-
-      // const interval = setInterval(() => {
-      //   currentValue += increment;
-      //   if (currentValue >= finalValue) {
-      //     currentValue = finalValue;
-      //     clearInterval(interval);
-      //   }
-      //   setDisplaySignal(`${currentValue.toFixed(2)}x`);
-      // }, intervalTime);
-      setDisplaySignal("Đang bảo trì");
-      // return () => clearInterval(interval);
-    }
   }, [signal]);
+
   
   useEffect(() => {
     let interval: NodeJS.Timeout;
