@@ -169,14 +169,14 @@ const Game = () => {
           >
             GET SIGNAL
           </button>
-          <a 
+{/*           <a 
             target="_blank" 
             rel="noopener noreferrer"
             href="https://m.f16878.vip/home/register?id=616801259&currency=VND" 
             className="game-here"
           >
             GAME HERE
-          </a>
+          </a> */}
         </div>
       </div>
     </div>
