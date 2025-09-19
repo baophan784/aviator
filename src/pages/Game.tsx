@@ -49,14 +49,14 @@ const Game = () => {
   // Tạo xác suất có trọng số
   const weightedRandom = () => {
     const rand = Math.random();
-    if (rand < 0.3) {
-      return getRandomFloat(1.0, 1.2, 2);
-    } else if (rand < 0.7) {
-      return getRandomFloat(1.2, 3.0, 2);
-    }else if (rand < 0.95) {
-      return getRandomFloat(3.0, 5.2, 2);
+    if (rand < 0.8) {
+      return getRandomFloat(1.0, 2.0, 2);
+    } else if (rand < 0.95) {
+      return getRandomFloat(2.1, 3.0, 2);
+    }else if (rand < 0.99) {
+      return getRandomFloat(3.0, 4.0, 2);
     } else {
-      return getRandomFloat(5.2, 40.99, 2);
+      return getRandomFloat(4.1, 40.99, 2);
     }
   };
 
@@ -142,14 +142,14 @@ const Game = () => {
         <div className="top-content">
           <img draggable={false} src={logoImage} alt="logo" className="logo-game" />
           
-          <a 
+          {/*<a 
             target="_blank" 
             rel="noopener noreferrer"
             href="https://t.me/CachepvangSlot" 
             className="z-index-100"
           >
             <p className="name-bot">@cachepvangSlot</p>
-          </a>
+          </a> */}
         </div>
 
         <div className="print-signal">
