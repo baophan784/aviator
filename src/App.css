@@ -221,7 +221,7 @@ body {
 }
 
 .stop-progress.animate {
-  animation: animateProgress 60s linear infinite;
+  animation: animateProgress 40s linear infinite;
 }
 
 @keyframes animateProgress {
