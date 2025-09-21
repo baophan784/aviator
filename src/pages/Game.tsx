@@ -72,7 +72,7 @@ const Game = () => {
 
   setSignal(`${receivingSignal}x`);
   setIsSignalActive(true);
-  setTimer(60);
+  setTimer(40);
 };
 
 
