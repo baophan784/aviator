@@ -25,7 +25,7 @@ const UserInfo = () => {
         <span className="balance">{balance.toLocaleString()} coins</span>
       </div>
       <button className="logout-btn" onClick={handleLogout}>
-        Logout
+        Đăng xuất
       </button>
     </div>
   );
