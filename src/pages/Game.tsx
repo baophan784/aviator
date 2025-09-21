@@ -79,7 +79,7 @@ const Game = () => {
   const handleGetSignalTwo = () => {
     setIsErrorTimerActive(true);
     setShowError(true);
-    setErrorMessage('Wait for the time to expire');
+    setErrorMessage('Đợi tới kết thúc phiên');
     setTimeout(() => {
       setShowError(false);
       setIsErrorTimerActive(false);
@@ -153,11 +153,11 @@ const Game = () => {
         </div>
 
         <div className="print-signal">
-          {displaySignal || <span>Click on<br />"GET SIGNAL"</span>}
+          {displaySignal || <span>Bấm vào <br />"Nhận kết quả"</span>}
         </div>
 
         <div className={`stop-signal-time ${isSignalActive ? '' : 'deactivate'}`}>
-          <p className="stop-timer">{timer}<span> seconds</span></p>
+          <p className="stop-timer">{timer}<span> giây</span></p>
           <div className={`stop-progress ${isSignalActive ? 'animate' : ''}`}></div>
         </div>
 
@@ -167,7 +167,7 @@ const Game = () => {
             onClick={handleGetSignal}
             disabled={isSignalActive}
           >
-            GET SIGNAL
+            Nhận kết quả
           </button>
 {/*           <a 
             target="_blank" 
