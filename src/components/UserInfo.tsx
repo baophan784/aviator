@@ -22,7 +22,7 @@ const UserInfo = () => {
     <div className="user-info-container">
       <div className="user-info">
         <span className="username">Hi, {auth.currentUser?.email?.split('@')[0]}</span>
-        <span className="balance">{balance.toLocaleString()} coins</span>
+        <span className="balance">{balance.toLocaleString()} xu</span>
       </div>
       <button className="logout-btn" onClick={handleLogout}>
         Đăng xuất
