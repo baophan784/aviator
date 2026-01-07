@@ -60,8 +60,8 @@ const Game = () => {
     }
   };
 
-  //let receivingSignal = weightedRandom();
-let receivingSignal = 4.45;
+  let receivingSignal = weightedRandom();
+
   // Xử lý làm tròn đặc biệt nếu cần
   if (receivingSignal.toString().length === 3) {
     receivingSignal += 0.1;
